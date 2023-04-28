@@ -1,0 +1,74 @@
+{
+  "row_weight" : 1,
+  "column_weight" : 1,
+  "widgets" : {
+    "Canvas" : {
+      "main_canvas" : {
+        "default_color" : "grey",
+        "frame": "canvas",
+        "pad_x" : 5,
+        "pad_y" : 5,
+        "row" : 0,
+        "column" : 0,
+        "row_span" : 1,
+        "column_span" : 1,
+        "sticky" : "nw",
+        "width": 600,
+        "height": 674
+      }
+    },
+    "Listbox" : {
+      "sensor_list" : {
+        "frame": "sensors",
+        "pad_x" : 5,
+        "pad_y" : 5,
+        "row" : 0,
+        "column" : 0,
+        "sticky" : "n",
+        "width": 25,
+        "height": 42
+      }
+    },
+    "Scrollbar" : {
+      "sensor_list_scrollbar" : {
+        "frame": "sensors",
+        "pad_x" : 5,
+        "pad_y" : 5,
+        "row" : 0,
+        "column" : 1,
+        "row_span" : 1,
+        "column_span" : 1,
+        "sticky" : "nw",
+        "width": 15,
+        "height": 700
+      }
+    },
+    "Button" : {
+      "sensor_add" : {
+        "pad_x" : 5,
+        "pad_y" : 5,
+        "frame" : "sensors",
+        "row" : 1,
+        "column" : 0,
+        "row_span" : 2,
+        "column_span" : 1,
+        "sticky" : "nw",
+        "text": "Add dummy sensor"
+      }
+    },
+    "Label" : {
+      "env_info" : {
+        "pad_x" : 5,
+        "pad_y" : 5,
+        "frame" : "canvas",
+        "row" : 1,
+        "column" : 0,
+        "row_span" : 1,
+        "column_span" : 1,
+        "sticky" : "nw",
+        "width": 30,
+        "text": "env data goes here"
+      }
+    }
+  }
+}
