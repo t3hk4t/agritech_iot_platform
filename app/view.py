@@ -132,9 +132,6 @@ class View:
                             sticky=widgets[widget][label]["sticky"]
                         )
 
-        def update_label(self, text: str):
-            pass
-            self.labelText.set("Test updated")
+        def add_sensor_to_list(self, id : int, name : str):
+            self.listBoxes["sensor_list"].insert(tk.END, f"{id}:{name}")
 
-        def __create_sensor_list(self):
-            pass
