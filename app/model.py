@@ -5,7 +5,8 @@ class Model:
     def __init__(self):
         self.con = None
         self.cur = None
-        self.sensors = {}
+        self.canvas_sensors = {}
+        self.fake_canvas_sensors = {}
 
     def getMyData(self):
         return "test"
@@ -13,13 +14,28 @@ class Model:
     def search_for_sensors(self):
         pass
 
-    def add_dummy_sensor(self, name:str, id:int):
-        self.sensors[id] = Sensor(id, name)
+    def add_dummy_sensor(self):
+        for index in range(1000):
+            if not index in self.fake_canvas_sensors:
+                self.fake_canvas_sensors[index] = {
+                    "index" : index,
+                    "name" : f"fake_sensor_{index}",
+                    "sensor_obj" : Sensor(index, f"fake_sensor_{index}")
+                }
+                return index, f"fake_sensor_{index}"
 
-    def get_sensor_data(self, id):
-        pass
+    def remove_dummy_sensor(self, index):
+        if index in self.fake_canvas_sensors:
+            del self.fake_canvas_sensors[index]
 
-    def get_sim_sensor_data(self, id):
-        if id in self.sensors:
-            return self.sensors[id].getData()
+    def get_sensor_data(self, index):
+        if index in self.canvas_sensors:
+            return self.canvas_sensors[index]["sensor_obj"].get_data()
 
+    def get_sim_sensor_data(self, index):
+        if index in self.fake_canvas_sensors:
+            return self.fake_canvas_sensors[index]["sensor_obj"].get_data()
+
+    def get_sim_sensor_name(self, index):
+        if index in self.fake_canvas_sensors:
+            return self.fake_canvas_sensors[index]["name"]
