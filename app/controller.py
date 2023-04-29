@@ -39,11 +39,27 @@ class Controller:
         x = event.x
         y = event.y
 
-        self.view.draw_oval_on_canvas(self.selected_sensor_index,
-                                      x - 5,
-                                      x + 5,
-                                      y - 5,
-                                      y + 5)
+        if self.selected_sensor_index == -1 :
+            index = self.view.get_drawn_sensor_index(x,y)
+
+            if index != -1:
+                name = self.model.get_sim_sensor_name(index)
+                config = {
+                    "name" : name,
+                    "index": index,
+                    "ip": self.model.get_sim_sensor_ip(index),
+                    "latest_val": self.model.get_sim_sensor_data(index)
+                }
+                self.view.sensor_dev_info_popup(index, name, config)
+
+        else :
+            self.view.draw_oval_on_canvas(self.selected_sensor_index,
+                                          x - 5,
+                                          x + 5,
+                                          y - 5,
+                                          y + 5)
+            self.selected_sensor_index = -1
+
 
     def on_canvas_right_click(self, event):
         pass

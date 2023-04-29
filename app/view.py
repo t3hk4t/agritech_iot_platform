@@ -146,7 +146,7 @@ class View:
         button1 = ttk.Button(sensor_list_popup, text="Delete",
                              command=lambda: on_delete(sensor_list_popup, index))
         button1.grid(row=0, column=0)
-        button2 = ttk.Button(sensor_list_popup, text="Save",
+        button2 = ttk.Button(sensor_list_popup, text="Select",
                              command=lambda: on_save(sensor_list_popup, index))
         button2.grid(row=0, column=1)
 
@@ -174,3 +174,18 @@ class View:
                 "y0": y0,
                 "y1": y1,
             }
+
+    def get_drawn_sensor_index(self, x, y):
+        for sensor in self.sensor_drawings:
+            if self.sensor_drawings[sensor]["x0"] <= x <= self.sensor_drawings[sensor]["x1"]:
+                if self.sensor_drawings[sensor]["y0"] <= y <= self.sensor_drawings[sensor]["y1"]:
+                    return sensor
+
+        return -1
+
+    def sensor_dev_info_popup(self,index, name, config : dict):
+        sensor_info_popup = tk.Toplevel(self.root)
+        sensor_info_popup.title(f"{index}:{name}")
+        for count, key in enumerate(config):
+            label = ttk.Label(sensor_info_popup, text=config[key])
+            label.grid(row=count, column=0)

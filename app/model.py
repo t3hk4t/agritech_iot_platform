@@ -1,6 +1,7 @@
 import sqlite3
 from sensor import Sensor
 
+
 class Model:
     def __init__(self):
         self.con = None
@@ -18,9 +19,9 @@ class Model:
         for index in range(1000):
             if not index in self.fake_canvas_sensors:
                 self.fake_canvas_sensors[index] = {
-                    "index" : index,
-                    "name" : f"fake_sensor_{index}",
-                    "sensor_obj" : Sensor(index, f"fake_sensor_{index}")
+                    "index": index,
+                    "name": f"fake_sensor_{index}",
+                    "sensor_obj": Sensor(index, f"fake_sensor_{index}")
                 }
                 return index, f"fake_sensor_{index}"
 
@@ -39,3 +40,7 @@ class Model:
     def get_sim_sensor_name(self, index):
         if index in self.fake_canvas_sensors:
             return self.fake_canvas_sensors[index]["name"]
+
+    def get_sim_sensor_ip(self, index):
+        if index in self.fake_canvas_sensors:
+            return self.fake_canvas_sensors[index]["sensor_obj"].get_ip()
